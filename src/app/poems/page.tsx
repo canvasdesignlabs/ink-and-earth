@@ -25,7 +25,7 @@ export default async function PoemsPage() {
           <TagFilter tags={allTags} />
           <div className="mt-xl grid gap-xl sm:grid-cols-2 lg:grid-cols-3">
             {poems.map((poem: { _id: string; title: string; slug: { current: string }; excerpt?: string; date: string; tags?: string[] }) => (
-              <div key={poem._id} data-tags={JSON.stringify(poem.tags || [])}>
+              <div key={poem._id} data-tags={JSON.stringify(poem.tags || [])} className="flex">
                 <PoemCard
                   title={poem.title}
                   slug={poem.slug.current}

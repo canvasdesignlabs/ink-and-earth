@@ -29,14 +29,14 @@ export default function Header() {
           Ink & Earth
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop nav — centered links with separated theme toggle */}
         <div className="hidden items-center gap-xl md:flex">
           <ul className="flex gap-xl list-none">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`font-accent text-[13px] font-medium tracking-[0.2em] uppercase no-underline transition-colors ${
+                  className={`inline-block font-accent text-[13px] font-medium tracking-[0.2em] uppercase no-underline transition-all duration-200 hover:-translate-y-[1px] ${
                     (link.exact ? pathname === link.href : pathname?.startsWith(link.href))
                       ? "text-accent-2"
                       : "text-text-primary hover:text-accent-2"
@@ -47,7 +47,9 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <ThemeToggle />
+          <div className="ml-md border-l border-border pl-xl">
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Mobile hamburger */}

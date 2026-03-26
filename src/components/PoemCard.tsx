@@ -12,7 +12,7 @@ export default function PoemCard({ title, slug, excerpt, date, tags }: PoemCardP
   return (
     <Link
       href={`/poems/${slug}`}
-      className="block rounded-md border border-border bg-surface p-xl no-underline transition-all duration-300 hover:-translate-y-[2px] hover:shadow-sm hover:border-accent"
+      className="flex w-full flex-col rounded-md border border-border bg-surface p-xl no-underline transition-all duration-300 hover:-translate-y-[2px] hover:shadow-sm hover:border-accent"
     >
       <h3 className="font-display text-2xl font-normal text-text-primary">
         {title}
@@ -22,7 +22,7 @@ export default function PoemCard({ title, slug, excerpt, date, tags }: PoemCardP
         {tags && tags.length > 0 && ` · ${tags[0]}`}
       </p>
       {excerpt && (
-        <p className="mt-md font-display text-lg font-light leading-relaxed text-text-secondary">
+        <p className="mt-md flex-1 font-display text-lg font-light leading-relaxed text-text-secondary">
           {excerpt}
         </p>
       )}

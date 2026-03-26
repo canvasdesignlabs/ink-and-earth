@@ -1,4 +1,6 @@
+import Link from "next/link";
 import Divider from "./Divider";
+import TipButton from "./TipButton";
 
 export default function Footer() {
   return (
@@ -10,18 +12,13 @@ export default function Footer() {
           If these words have found you, consider supporting the work.
         </p>
         <div className="mb-xl flex justify-center gap-md">
-          <a
-            href="#"
+          <Link
+            href="/bookstore"
             className="rounded-sm border border-accent px-lg py-sm font-accent text-xs tracking-[0.15em] uppercase text-accent no-underline transition-colors hover:bg-accent hover:text-warm-white"
           >
             Buy a Book
-          </a>
-          <a
-            href="#"
-            className="rounded-sm border border-accent-2 px-lg py-sm font-accent text-xs tracking-[0.15em] uppercase text-accent-2 no-underline transition-colors hover:bg-accent-2 hover:text-warm-white"
-          >
-            Leave a Tip
-          </a>
+          </Link>
+          <TipButton />
         </div>
 
         <Divider className="mb-lg" />
