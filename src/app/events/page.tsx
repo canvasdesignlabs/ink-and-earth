@@ -1,4 +1,5 @@
 import { getAllEvents } from "@/sanity/lib/queries";
+import FeatherFloat from "@/components/animations/FeatherFloat";
 
 export const metadata = {
   title: "Events — Ink & Earth",
@@ -13,6 +14,7 @@ export default async function EventsPage() {
 
   return (
     <main className="relative z-10 flex-1">
+      <FeatherFloat yOffset={15}>
       <section className="mx-auto max-w-[960px] px-lg py-3xl">
         <h1 className="font-display text-4xl font-normal text-text-primary mb-xl">
           Events
@@ -97,6 +99,7 @@ export default async function EventsPage() {
           <p className="font-body text-text-secondary">No events scheduled yet. Check back soon.</p>
         )}
       </section>
+      </FeatherFloat>
     </main>
   );
 }

@@ -6,6 +6,7 @@ import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
+  { href: "/", label: "Home", exact: true },
   { href: "/poems", label: "Poems" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
@@ -36,7 +37,7 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className={`font-accent text-[13px] font-medium tracking-[0.2em] uppercase no-underline transition-colors ${
-                    pathname?.startsWith(link.href)
+                    (link.exact ? pathname === link.href : pathname?.startsWith(link.href))
                       ? "text-accent-2"
                       : "text-text-primary hover:text-accent-2"
                   }`}
@@ -83,7 +84,7 @@ export default function Header() {
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className={`font-accent text-[14px] font-medium tracking-[0.2em] uppercase no-underline transition-colors ${
-                    pathname?.startsWith(link.href)
+                    (link.exact ? pathname === link.href : pathname?.startsWith(link.href))
                       ? "text-accent-2"
                       : "text-text-primary hover:text-accent-2"
                   }`}

@@ -1,4 +1,5 @@
 import { getAllPublications } from "@/sanity/lib/queries";
+import FeatherFloat from "@/components/animations/FeatherFloat";
 
 export const metadata = {
   title: "Publications — Ink & Earth",
@@ -10,6 +11,7 @@ export default async function PublicationsPage() {
 
   return (
     <main className="relative z-10 flex-1">
+      <FeatherFloat yOffset={15}>
       <section className="mx-auto max-w-[960px] px-lg py-3xl">
         <h1 className="font-display text-4xl font-normal text-text-primary mb-xl">
           Publications
@@ -45,6 +47,7 @@ export default async function PublicationsPage() {
           <p className="font-body text-text-secondary">Publications coming soon.</p>
         )}
       </section>
+      </FeatherFloat>
     </main>
   );
 }
