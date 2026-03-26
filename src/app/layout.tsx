@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Cormorant_SC, Source_Sans_3 } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -41,7 +43,11 @@ export default function RootLayout({
       data-theme="light"
       className={`${cormorantGaramond.variable} ${cormorantSC.variable} ${sourceSans3.variable}`}
     >
-      <body>{children}</body>
+      <body className="flex min-h-screen flex-col">
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
