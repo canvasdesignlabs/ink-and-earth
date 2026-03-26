@@ -7,6 +7,7 @@ export default defineConfig({
   title: "Ink & Earth",
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "PLACEHOLDER",
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  basePath: "/studio",
   plugins: [structureTool()],
   schema: {
     types: schemaTypes,
