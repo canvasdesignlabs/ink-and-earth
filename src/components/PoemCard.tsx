@@ -12,12 +12,12 @@ export default function PoemCard({ title, slug, excerpt, date, tags }: PoemCardP
   return (
     <Link
       href={`/poems/${slug}`}
-      className="block rounded-md border border-border bg-surface p-xl no-underline transition-colors hover:border-accent"
+      className="block rounded-md border border-border bg-surface p-xl no-underline transition-all duration-300 hover:-translate-y-[2px] hover:shadow-sm hover:border-accent"
     >
       <h3 className="font-display text-2xl font-normal text-text-primary">
         {title}
       </h3>
-      <p className="mt-xs font-accent text-xs tracking-[0.12em] uppercase text-text-secondary">
+      <p className="mt-xs font-accent text-xs tracking-[0.12em] uppercase text-accent-2">
         {date && new Date(date + "T00:00:00").toLocaleDateString("en-US", { month: "long", year: "numeric" })}
         {tags && tags.length > 0 && ` · ${tags[0]}`}
       </p>
