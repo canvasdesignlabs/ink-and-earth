@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
+/* ========================================
+   INK & EARTH — COLOR TOKEN SYSTEM
+   Change these values to re-theme the entire site.
+   ======================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core palette */
+  --color-cream:           #FAF7F2;
+  --color-warm-white:      #FFFDF9;
+  --color-parchment:       #F0EBE1;
+  --color-sage:            #8B9E7C;
+  --color-sage-dark:       #6B7F5E;
+  --color-sage-light:      #A8B89C;
+  --color-terracotta:      #C4785B;
+  --color-terracotta-dark: #A8623E;
+  --color-charcoal:        #2C2C2C;
+  --color-stone:           #6B6560;
+  --color-fog:             #D4CFC7;
+
+  /* Semantic mappings */
+  --bg-page:        var(--color-cream);
+  --bg-surface:     var(--color-warm-white);
+  --bg-elevated:    #FFFFFF;
+  --border:         var(--color-parchment);
+  --text-primary:   var(--color-charcoal);
+  --text-secondary: var(--color-stone);
+  --text-muted:     var(--color-fog);
+  --accent:         var(--color-sage);
+  --accent-hover:   var(--color-sage-dark);
+  --accent-2:       var(--color-terracotta);
+  --accent-2-hover: var(--color-terracotta-dark);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-short: 200ms;
+  --duration-medium: 350ms;
 }
 
+/* Dark mode */
+[data-theme="dark"] {
+  --bg-page:        #1A1916;
+  --bg-surface:     #242220;
+  --bg-elevated:    #2E2C29;
+  --border:         #3A3733;
+  --text-primary:   #E8E4DC;
+  --text-secondary: #9E9890;
+  --text-muted:     #5A5650;
+  --accent:         #A8B89C;
+  --accent-hover:   #8B9E7C;
+  --accent-2:       #D4906E;
+  --accent-2-hover: #C4785B;
+}
+
+/* ========================================
+   TAILWIND THEME — Maps tokens to utilities
+   ======================================== */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-cream: var(--color-cream);
+  --color-warm-white: var(--color-warm-white);
+  --color-parchment: var(--color-parchment);
+  --color-sage: var(--color-sage);
+  --color-sage-dark: var(--color-sage-dark);
+  --color-sage-light: var(--color-sage-light);
+  --color-terracotta: var(--color-terracotta);
+  --color-terracotta-dark: var(--color-terracotta-dark);
+  --color-charcoal: var(--color-charcoal);
+  --color-stone: var(--color-stone);
+  --color-fog: var(--color-fog);
+
+  /* Semantic colors */
+  --color-page: var(--bg-page);
+  --color-surface: var(--bg-surface);
+  --color-elevated: var(--bg-elevated);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-2: var(--accent-2);
+  --color-accent-2-hover: var(--accent-2-hover);
+
+  /* Typography */
+  --font-display: var(--font-cormorant-garamond), Georgia, serif;
+  --font-body: var(--font-source-sans-3), 'Segoe UI', sans-serif;
+  --font-accent: var(--font-cormorant-sc), serif;
+
+  /* Spacing */
+  --spacing-2xs: 2px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 96px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ========================================
+   BASE STYLES
+   ======================================== */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  font-size: 17px;
+  transition: background-color var(--duration-medium) var(--ease-out),
+              color var(--duration-medium) var(--ease-out);
+}
+
+/* Subtle paper texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Links */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--duration-short) var(--ease-out);
+}
+a:hover {
+  color: var(--accent-hover);
 }
