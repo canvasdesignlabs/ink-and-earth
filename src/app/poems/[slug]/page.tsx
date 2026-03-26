@@ -1,6 +1,5 @@
 import { getPoemBySlug, getPoemSlugs, getAdjacentPoems } from "@/sanity/lib/queries";
 import PoemReveal from "@/components/PoemReveal";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -34,35 +33,14 @@ export default async function PoemPage({ params }: PoemPageProps) {
     <main className="relative z-10 flex-1">
       <article className="mx-auto max-w-[600px] px-lg py-4xl text-center">
         <PoemReveal
+          key={slug}
           title={poem.title}
           body={poem.body || []}
           date={poem.date}
           tags={poem.tags}
+          prev={prev ? { title: prev.title, slug: prev.slug.current } : undefined}
+          next={next ? { title: next.title, slug: next.slug.current } : undefined}
         />
-
-        {/* Previous / Next */}
-        <div className="mt-3xl flex justify-between border-t border-border pt-xl">
-          {prev ? (
-            <Link
-              href={`/poems/${prev.slug.current}`}
-              className="font-accent text-xs tracking-[0.12em] uppercase text-text-secondary no-underline hover:text-accent"
-            >
-              &larr; {prev.title}
-            </Link>
-          ) : (
-            <span />
-          )}
-          {next ? (
-            <Link
-              href={`/poems/${next.slug.current}`}
-              className="font-accent text-xs tracking-[0.12em] uppercase text-text-secondary no-underline hover:text-accent"
-            >
-              {next.title} &rarr;
-            </Link>
-          ) : (
-            <span />
-          )}
-        </div>
       </article>
     </main>
   );
