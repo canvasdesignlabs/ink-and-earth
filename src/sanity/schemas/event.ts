@@ -29,6 +29,18 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "time",
+      title: "Time",
+      type: "string",
+      description: "Display time (e.g. '7:00 PM' or '10:00 AM – 1:00 PM')",
+    }),
+    defineField({
+      name: "admission",
+      title: "Admission",
+      type: "string",
+      description: "Admission info (e.g. 'Free', '$35 · Limited spots')",
+    }),
+    defineField({
       name: "link",
       title: "Link",
       type: "url",

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FeatherFloat from "@/components/animations/FeatherFloat";
+import { getAllEvents } from "@/sanity/lib/queries";
 
 interface Event {
   _id: string;
@@ -20,9 +21,8 @@ export default function EventsPage() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   useEffect(() => {
-    // Import dynamically to avoid making this a server component
-    import("@/lib/placeholder-data").then((mod) => {
-      setEvents(mod.placeholderEvents as Event[]);
+    getAllEvents().then((data: Event[]) => {
+      setEvents(data);
     });
   }, []);
 
@@ -97,10 +97,10 @@ export default function EventsPage() {
                           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="mx-xl border-x border-b border-border rounded-b-md bg-surface px-xl pb-xl pt-lg">
+                          <div className="mx-xl rounded-b-md border-x border-b border-border bg-surface px-xl pb-xl pt-lg">
                             {event.description && (
                               <p className="font-body text-[15px] leading-relaxed text-text-primary">
-                                {event.description}
+                                {typeof event.description === "string" ? event.description : ""}
                               </p>
                             )}
                             <div className="mt-lg flex flex-wrap items-center gap-lg">
@@ -188,10 +188,10 @@ export default function EventsPage() {
                           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="mx-lg border-x border-b border-border rounded-b-md bg-surface/50 px-lg pb-lg pt-md">
+                          <div className="mx-lg rounded-b-md border-x border-b border-border bg-surface/50 px-lg pb-lg pt-md">
                             {event.description && (
                               <p className="font-body text-sm leading-relaxed text-text-secondary">
-                                {event.description}
+                                {typeof event.description === "string" ? event.description : ""}
                               </p>
                             )}
                             {event.admission && (

@@ -100,7 +100,17 @@ export async function getAllEvents() {
   if (usePlaceholder) return placeholderEvents;
   return client.fetch(
     `*[_type == "event"] | order(date asc) {
-      _id, title, description, date, location, link
+      _id, title, description, date, location, link, time, admission
+    }`
+  );
+}
+
+// Books (Bookstore)
+export async function getAllBooks() {
+  if (usePlaceholder) return [];
+  return client.fetch(
+    `*[_type == "book"] | order(sortOrder asc) {
+      _id, title, subtitle, description, price, year, format, coverColor, buyLink, sortOrder
     }`
   );
 }
