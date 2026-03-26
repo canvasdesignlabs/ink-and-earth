@@ -35,10 +35,10 @@ export default function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`font-accent text-[13px] tracking-[0.2em] uppercase no-underline transition-colors ${
+                  className={`font-accent text-[13px] font-medium tracking-[0.2em] uppercase no-underline transition-colors ${
                     pathname?.startsWith(link.href)
-                      ? "text-accent"
-                      : "text-text-secondary hover:text-accent"
+                      ? "text-accent-2"
+                      : "text-text-primary hover:text-accent-2"
                   }`}
                 >
                   {link.label}
@@ -82,10 +82,10 @@ export default function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className={`font-accent text-[14px] tracking-[0.2em] uppercase no-underline transition-colors ${
+                  className={`font-accent text-[14px] font-medium tracking-[0.2em] uppercase no-underline transition-colors ${
                     pathname?.startsWith(link.href)
-                      ? "text-accent"
-                      : "text-text-secondary hover:text-accent"
+                      ? "text-accent-2"
+                      : "text-text-primary hover:text-accent-2"
                   }`}
                 >
                   {link.label}
